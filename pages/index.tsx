@@ -1,5 +1,7 @@
+import Hero from "../components/hero";
+
 function Home() {
-  return <div>Olá mundo</div>;
+  return <Hero />;
 }
 
 export default Home;
