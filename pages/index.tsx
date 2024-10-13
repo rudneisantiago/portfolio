@@ -11,13 +11,19 @@ function Home({ sobre }) {
 }
 
 export async function getStaticProps() {
-  const fetchApi = await fetch(`${process.env.APP_URL}/api/about-me`);
+  const fetchApi = await fetch(`${process.env.APP_URL}/api/about-me`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
   const { data: sobre } = await fetchApi.json();
+
   return {
     props: {
       sobre,
     },
-    revalidate: 60 * 5,
+    revalidate: 60,
   };
 }
 
