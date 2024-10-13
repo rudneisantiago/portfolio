@@ -1,6 +1,20 @@
+import { useEffect, useState } from "react";
 import { Hero, MainNav, AboutMe } from "../components";
 
-function Home({ sobre }) {
+function Index() {
+  const [sobre, setSobre] = useState();
+
+  const fetchSobre = async () => {
+    const fetchApi = await fetch(`/api/about-me`);
+
+    const { data } = await fetchApi.json();
+    setSobre(data);
+  };
+
+  useEffect(() => {
+    fetchSobre();
+  }, []);
+
   return (
     <>
       <Hero />
@@ -10,21 +24,21 @@ function Home({ sobre }) {
   );
 }
 
-export async function getStaticProps() {
-  const fetchApi = await fetch(`${process.env.APP_URL}/api/about-me`, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+// export async function getStaticProps() {
+//   const fetchApi = await fetch(`${process.env.APP_URL}/api/about-me`, {
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
 
-  const { data: sobre } = await fetchApi.json();
+//   const { data: sobre } = await fetchApi.json();
 
-  return {
-    props: {
-      sobre,
-    },
-    revalidate: 60,
-  };
-}
+//   return {
+//     props: {
+//       sobre,
+//     },
+//     revalidate: 60,
+//   };
+// }
 
-export default Home;
+export default Index;
