@@ -1,4 +1,4 @@
-import H1 from "./h1";
+import { H1 } from "./h1";
 
 function Hero() {
   return (
@@ -25,4 +25,4 @@ function Hero() {
   );
 }
 
-export default Hero;
+export { Hero };

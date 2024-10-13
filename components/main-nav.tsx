@@ -19,4 +19,4 @@ function MainNav() {
   );
 }
 
-export default MainNav;
+export { MainNav };

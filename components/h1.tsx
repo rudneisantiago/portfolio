@@ -1,4 +1,6 @@
-function H1(props) {
+import { HTMLAttributes } from "react";
+
+function H1(props: HTMLAttributes<HTMLHeadingElement>) {
   return (
     <h1 className="text-4xl font-bold my-8 text-dark-blue-950">
       {props.children}
@@ -6,4 +8,4 @@ function H1(props) {
   );
 }
 
-export default H1;
+export { H1 };
